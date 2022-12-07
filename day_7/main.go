@@ -91,7 +91,7 @@ func (dir *directory) Walk(total *int, sizeList *[]int) {
 }
 
 func main() {
-	f, err := os.Open("./test_input.txt")
+	f, err := os.Open("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -157,12 +157,13 @@ func main() {
 
 	// part2
 	sl := []int{}
+	diff := filesystem - root.size
 	for _, size := range sizeList {
-		if filesystem-size >= required {
+		if size+diff >= required {
 			sl = append(sl, size)
 		}
 	}
 	sort.Ints(sl)
-	fmt.Println(sl)
+	fmt.Println(sl[0])
 
 }
